@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>twopointthree</title>
+    <style>
+        #canvas {
+            border: 2px solid black;
+            background-color: black;
+        }
+        body{
+            background-color: sandybrown;
+        }
+    </style>
+</head>
+<body onload="transform();">
+    <br><br><br><br><br><br><br><br>
+    <center>
+        <canvas id="canvas" width="720" height="640"></canvas>
+    </center>
+    <script>
+        function transform() {
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+
+            function drawLetter(letter, x, y, color, rotateAngle = 0) {
+                ctx.scale(0.94, 1.0)
+                ctx.save();
+                ctx.fillStyle = color;
+                ctx.font = 'italic bold 100px Century Gothic';
+                if (rotateAngle !== 0) {
+                    ctx.translate(x, y);
+                    ctx.rotate(rotateAngle * Math.PI / 180);
+                    ctx.fillText(letter, 0, 0);
+                } else {
+                    ctx.fillText(letter, x, y);
+                }
+                ctx.restore();
+            }
+            drawLetter('C', 100, 320, 'red');
+            drawLetter('a', 180, 320, 'orange');
+            drawLetter('l', 260, 320, 'yellow');
+            drawLetter('l', 300, 320, 'green');
+            drawLetter('i', 350, 280, 'blue', 90);
+            drawLetter('g', 460, 320, 'indigo');
+            drawLetter('r', 560, 320, 'violet');
+            drawLetter('a', 625, 320, 'red');
+            drawLetter('p', 730, 320, 'orange');
+            drawLetter('h', 840, 320, 'yellow');
+            drawLetter('i', 960, 280, 'green', 90);
+            drawLetter('c', 1110, 320, 'blue');
+            drawLetter('a', 1250, 320, 'indigo');
+            drawLetter('l', 1400, 320, 'violet');
+        }
+    </script>
+</body>
+</html>
